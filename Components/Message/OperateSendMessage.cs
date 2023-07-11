@@ -64,13 +64,13 @@ public class OperateSendMessage : MonoBehaviour
         }
     }
 
-    private void OperationReceiveData(string data) {
-        ReceiveMessage.Instance.ReceiveMessage_(JsonConvert.DeserializeObject<MessageData>(data));
+    private void OperationReceiveData(string receive_message) {
+        ReceiveMessage.Instance.ReceiveMessage_(JsonConvert.DeserializeObject<MessageData>(receive_message));
     }
 
-    public void SendMessage_(string message)
+    public void SendMessage_(string send_message)
     {
-        byte[] data = Encoding.UTF8.GetBytes(message);
+        byte[] data = Encoding.UTF8.GetBytes(send_message);
         stream.Write(data, 0, data.Length);
         stream.Flush();
     }

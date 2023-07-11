@@ -1,5 +1,6 @@
 public class PlayerData
 {
+    public string playerStatus;
     public string playerName;
 }
 

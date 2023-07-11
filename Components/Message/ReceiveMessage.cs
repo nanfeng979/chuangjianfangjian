@@ -24,13 +24,14 @@ public class ReceiveMessage : MonoBehaviour
     }
 
     // 主要操作接收到的数据
-    private void OperateReceiveData(MessageData message)
+    private void OperateReceiveData(MessageData receive_message)
     {
-        HandleMessage.Instance.DebugMessageData(message);
+        HandleMessage.Instance.DebugMessageData(receive_message);
     }
 
-    public void ReceiveMessage_(MessageData message)
+    // 接收收到的数据
+    public void ReceiveMessage_(MessageData receive_message)
     {
-        receiveMessage = message;
+        receiveMessage = receive_message;
     }
 }

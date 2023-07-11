@@ -19,9 +19,9 @@ public class HandleMessage : MonoBehaviour
         
     }
 
-    public void DebugMessageData(MessageData data)
+    public void DebugMessageData(MessageData receive_message)
     {
-        Debug.Log(JsonConvert.SerializeObject(data));
+        Debug.Log(JsonConvert.SerializeObject(receive_message));
     }
     
 }

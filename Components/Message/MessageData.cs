@@ -1,6 +1,6 @@
 public class MessageData
 {
-    public string type;
+    public string messageType;
     public PlayerData playerData = new PlayerData();
 
 }

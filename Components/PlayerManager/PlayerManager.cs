@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Test() {
         MessageData message = new MessageData();
-        message.type = EMessageType.JoinRoom.ToString();
+        message.messageType = EMessageType.JoinRoom.ToString();
         message.playerData = selfData;
         OperateSendMessage.Instance.SendMessage_(JsonConvert.SerializeObject(message));
     }
