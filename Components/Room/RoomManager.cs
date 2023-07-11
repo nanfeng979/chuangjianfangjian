@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
+    // 接收广播消息
+    private MessageData receiveMessage;
+
+    // 管理当前房间的玩家
+    // public List<PlayerData> players = new List<PlayerData>();
+    public List<string> playerNameList;
 
     void Start()
     {
@@ -13,7 +19,40 @@ public class RoomManager : MonoBehaviour
 
     void Update()
     {
-        
+        if(receiveMessage != null) {
+            OperateReceiveMessage(receiveMessage);
+            receiveMessage = null;
+        }
+
+        // 打印成员数据
+        DebugPlayers();
+    }
+
+    private void OperateReceiveMessage(MessageData receive_message)
+    {
+        if(receive_message.messageType == EMessageType.JoinRoom.ToString()) {
+            SetPlayerJoinRoom(receive_message.playerData);
+        }
+    }
+
+    private void SetPlayerJoinRoom(PlayerData player_data) {
+        if(player_data != null) {
+            if(!playerNameList.Contains(player_data.playerName)) {
+                playerNameList.Add(player_data.playerName);
+            }
+        }
+    }
+
+    private void DebugPlayers() {
+        string a = "";
+        for(int i = 0; i < playerNameList.Count; i++) {
+            a += playerNameList[i] + ", ";
+        }
+        Debug.Log("Room 成员有: " + a);
+    }
+
+    public void SetReceiveMessage(MessageData receive_message) {
+        receiveMessage = receive_message;
     }
 
     private void SetCurrentPlayerStatus(PlayerStatus status) {
