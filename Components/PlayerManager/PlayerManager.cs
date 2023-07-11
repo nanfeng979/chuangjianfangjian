@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour
         switch (currentPlayerStatus)
         {
             case PlayerStatus.None:
+                NoneStatus();
                 break;
             case PlayerStatus.JoinRoom:
                 JoinRoomStatus();
@@ -37,6 +38,9 @@ public class PlayerManager : MonoBehaviour
             case PlayerStatus.Play:
                 break;
         }
+    }
+    private void NoneStatus() {
+        Debug.Log("当前状态为None");
     }
 
     private void JoinRoomStatus() {
