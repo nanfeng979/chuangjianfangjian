@@ -28,6 +28,7 @@ public class HandleMessage : MonoBehaviour
     public void OperateReceiveMessage(MessageData receive_message)
     {
         DebugMessageMessage(receive_message);
+        // 如果当前是在开房间的状态,则发送给RoomManager
         GameObject.Find("RoomManager").GetComponent<RoomManager>().SetReceiveMessage(receive_message);
     }
 

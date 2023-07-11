@@ -7,6 +7,8 @@ public class PlayerData
 public enum PlayerStatus
 {
     None,
+    JoinRoom,
+    WaitToSit,
     Ready,
     Play,
 }

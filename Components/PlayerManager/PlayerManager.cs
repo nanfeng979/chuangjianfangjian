@@ -26,17 +26,30 @@ public class PlayerManager : MonoBehaviour
         {
             case PlayerStatus.None:
                 break;
+            case PlayerStatus.JoinRoom:
+                JoinRoomStatus();
+                break;
+            case PlayerStatus.WaitToSit:
+                WaitToSitStatus();
+                break;
             case PlayerStatus.Ready:
-                ReadyStatus();
                 break;
             case PlayerStatus.Play:
                 break;
         }
     }
 
-    private void ReadyStatus() {
+    private void JoinRoomStatus() {
+        SendMessageWithSelfStatus(EMessageType.JoinRoom);
+    }
+
+    private void WaitToSitStatus() {
+        SendMessageWithSelfStatus(EMessageType.WaitToSit);
+    }
+
+    private void SendMessageWithSelfStatus(EMessageType self_status) {
         MessageData send_message = new MessageData();
-        send_message.messageType = EMessageType.JoinRoom.ToString();
+        send_message.messageType = self_status.ToString();
         send_message.playerData = selfData;
         OperateSendMessage.Instance.SendMessage_(JsonConvert.SerializeObject(send_message));
     }
@@ -44,6 +57,7 @@ public class PlayerManager : MonoBehaviour
     public void SetPlayerStatus(PlayerStatus status)
     {
         currentPlayerStatus = status;
+        selfData.playerStatus = status.ToString();
     }
 
     public void SetPlayerName(string name)

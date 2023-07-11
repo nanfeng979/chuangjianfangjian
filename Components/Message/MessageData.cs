@@ -9,5 +9,6 @@ public enum EMessageType {
     None,
     // 广播
     Broadcast,
-    JoinRoom
+    JoinRoom,
+    WaitToSit,
 }
