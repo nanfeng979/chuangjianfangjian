@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoomManager : MonoBehaviour
 {
@@ -42,6 +43,19 @@ public class RoomManager : MonoBehaviour
             }
         }
 
+        if(receive_message.messageType == EMessageType.WaitToSit.ToString()) {
+            for(int i = 0; i < 4; i++) {
+                if(seats[i].transform.Find("PlayerName").GetComponent<Text>().text == receive_message.playerData.playerName) {
+                    return;
+                }
+                
+                if(seats[i].transform.Find("PlayerName").GetComponent<Text>().text == "PlayerName: ") {
+                    seats[i].transform.Find("PlayerName").GetComponent<Text>().text = receive_message.playerData.playerName;
+                    SetCurrentPlayerStatus(PlayerStatus.None);
+                    break;
+                }
+            }
+        }
     }
 
     private void SetPlayerJoinRoom(PlayerData player_data) {

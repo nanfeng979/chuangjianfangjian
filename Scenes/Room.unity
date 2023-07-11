@@ -703,6 +703,11 @@ MonoBehaviour:
   - {fileID: 1886716897}
   - {fileID: 1422766062}
   - {fileID: 666442842}
+  playerNameList:
+  - 
+  - 
+  - 
+  - 
 --- !u!1001 &1886716895
 PrefabInstance:
   m_ObjectHideFlags: 0
