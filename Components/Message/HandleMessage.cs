@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class HandleMessage : MonoBehaviour
@@ -18,9 +19,9 @@ public class HandleMessage : MonoBehaviour
         
     }
 
-    public void DebugLog(PlayerData playerData)
+    public void DebugMessageData(MessageData data)
     {
-        Debug.Log(playerData.playerName);
+        Debug.Log(JsonConvert.SerializeObject(data));
     }
     
 }

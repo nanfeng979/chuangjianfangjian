@@ -6,7 +6,7 @@ public class ReceiveMessage : MonoBehaviour
 {
     public static ReceiveMessage Instance;
 
-    private PlayerData receiveMessage;
+    private MessageData receiveMessage;
 
     void Start()
     {
@@ -23,12 +23,13 @@ public class ReceiveMessage : MonoBehaviour
         }
     }
 
-    private void OperateReceiveData(PlayerData message)
+    // 主要操作接收到的数据
+    private void OperateReceiveData(MessageData message)
     {
-        
+        HandleMessage.Instance.DebugMessageData(message);
     }
 
-    public void ReceiveMessage_(PlayerData message)
+    public void ReceiveMessage_(MessageData message)
     {
         receiveMessage = message;
     }

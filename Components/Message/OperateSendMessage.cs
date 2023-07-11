@@ -3,11 +3,12 @@ using System.Collections;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using Newtonsoft.Json;
 using UnityEngine;
 
-public class SendMessage : MonoBehaviour
+public class OperateSendMessage : MonoBehaviour
 {
-    public static SendMessage Instance;
+    public static OperateSendMessage Instance;
     private TcpClient client;
     private NetworkStream stream;
     private byte[] buffer = new byte[1024];
@@ -64,7 +65,7 @@ public class SendMessage : MonoBehaviour
     }
 
     private void OperationReceiveData(string data) {
-        ReceiveMessage.Instance.ReceiveMessage_(JsonUtility.FromJson<PlayerData>(data));
+        ReceiveMessage.Instance.ReceiveMessage_(JsonConvert.DeserializeObject<MessageData>(data));
     }
 
     public void SendMessage_(string message)

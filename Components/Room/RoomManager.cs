@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    private string playerName;
 
     void Start()
     {
@@ -13,8 +13,8 @@ public class RoomManager : MonoBehaviour
 
     void Update()
     {
-        if(playerName == null) {
-            playerName = GameObject.Find("PlayerManager").GetComponent<PlayerManager>().GetPlayerName();
-        }
+        
     }
+
+    
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class PlayerManager : MonoBehaviour
 
     void AWake()
     {
-        DontDestroyOnLoad(gameObject);
+        
     }
 
     void Start()
@@ -19,6 +20,13 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void Test() {
+        MessageData message = new MessageData();
+        message.type = EMessageType.JoinRoom.ToString();
+        message.playerData = selfData;
+        OperateSendMessage.Instance.SendMessage_(JsonConvert.SerializeObject(message));
     }
 
     public void SetPlayerName(string name)
