@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
+  sceneName: Room
 --- !u!1 &6542716631641662180
 GameObject:
   m_ObjectHideFlags: 0

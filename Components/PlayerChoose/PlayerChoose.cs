@@ -30,8 +30,7 @@ public class PlayerChoose : MonoBehaviour
     }
 
     private void SetPlayerName(string name) {
-        PlayerManager playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
-        playerManager.SetPlayerName(name);
+        GameObject.Find("PlayerManager").GetComponent<PlayerManager>().SetPlayerName(name);
     }
 
     private void NextScene(string sceneName) {

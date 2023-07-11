@@ -21,10 +21,6 @@ public class SendMessage : MonoBehaviour
         }
 
         ConnectToServer();
-
-        // PlayerData playerData = new PlayerData();
-        // playerData.playerName = PlayerSet.Instance.playerName;
-        // OperationReceiveMessage.Instance.playerData = playerData;
     }
 
     private void ConnectToServer()
@@ -36,7 +32,7 @@ public class SendMessage : MonoBehaviour
             stream = client.GetStream();
 
             // 开始接收服务器消息的线程
-            Thread receiveThread = new Thread(ReceiveMessage);
+            Thread receiveThread = new Thread(ReceiveMessage_);
             receiveThread.Start();
         }
         catch (Exception e)
@@ -45,7 +41,7 @@ public class SendMessage : MonoBehaviour
         }
     }
 
-    private void ReceiveMessage()
+    private void ReceiveMessage_()
     {
         while (true)
         {
@@ -68,7 +64,7 @@ public class SendMessage : MonoBehaviour
     }
 
     private void OperationReceiveData(string data) {
-        // OperationReceiveMessage.Instance.playerData = JsonUtility.FromJson<PlayerData>(data);
+        ReceiveMessage.Instance.ReceiveMessage_(JsonUtility.FromJson<PlayerData>(data));
     }
 
     public void SendMessage_(string message)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    private string playerName;
+    private PlayerData selfData = new PlayerData();
 
     void AWake()
     {
@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
-        
+        DontDestroyOnLoad(gameObject);
     }
 
     void Update()
@@ -23,6 +23,11 @@ public class PlayerManager : MonoBehaviour
 
     public void SetPlayerName(string name)
     {
-        playerName = name;
+        selfData.playerName = name;
+    }
+
+    public string GetPlayerName()
+    {
+        return selfData.playerName;
     }
 }

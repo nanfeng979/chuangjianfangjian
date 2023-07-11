@@ -437,6 +437,10 @@ PrefabInstance:
       propertyPath: playerName
       value: PlayerB
       objectReference: {fileID: 0}
+    - target: {fileID: -4610275744205809417, guid: 092961fc0b1d31b4d8b459e1cc222067, type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 1542300365}
     - target: {fileID: 1985604420381828041, guid: 092961fc0b1d31b4d8b459e1cc222067, type: 3}
       propertyPath: m_Text
       value: PlayerB
@@ -547,6 +551,10 @@ PrefabInstance:
       propertyPath: playerName
       value: PlayerA
       objectReference: {fileID: 0}
+    - target: {fileID: -4610275744205809417, guid: 092961fc0b1d31b4d8b459e1cc222067, type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 1542300365}
     - target: {fileID: 2222087043428097272, guid: 092961fc0b1d31b4d8b459e1cc222067, type: 3}
       propertyPath: m_Name
       value: PlayerChooseButtonA
