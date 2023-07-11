@@ -7,6 +7,8 @@ public class HandleMessage : MonoBehaviour
 {
     public static HandleMessage Instance;
 
+    private MessageData receiveMessage;
+
     void Start()
     {
         if(Instance == null) {
@@ -16,10 +18,20 @@ public class HandleMessage : MonoBehaviour
 
     void Update()
     {
-        
+        if(receiveMessage != null) {
+            OperateReceiveMessage(receiveMessage);
+            receiveMessage = null;
+        }
     }
 
-    public void DebugMessageMessage(MessageData receive_message)
+    // 主要操作接收到的数据
+    public void OperateReceiveMessage(MessageData receive_message)
+    {
+        DebugMessageMessage(receive_message);
+        GameObject.Find("RoomManager").GetComponent<RoomManager>().SetReceiveMessage(receive_message);
+    }
+
+    private void DebugMessageMessage(MessageData receive_message)
     {
         Debug.Log("打印收到后台的消息" + JsonConvert.SerializeObject(receive_message));
     }

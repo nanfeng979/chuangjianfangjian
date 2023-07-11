@@ -18,16 +18,10 @@ public class ReceiveMessage : MonoBehaviour
     void Update()
     {
         if(receiveMessage != null) {
-            OperateReceiveMessage(receiveMessage);
+            // 将接收到的数据分流到HandleMessage中
+            HandleMessage.Instance.OperateReceiveMessage(receiveMessage);
             receiveMessage = null;
         }
-    }
-
-    // 主要操作接收到的数据
-    private void OperateReceiveMessage(MessageData receive_message)
-    {
-        HandleMessage.Instance.DebugMessageMessage(receive_message);
-        GameObject.Find("RoomManager").GetComponent<RoomManager>().SetReceiveMessage(receive_message);
     }
 
     // 接收收到的数据
