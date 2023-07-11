@@ -8,7 +8,7 @@ public class RoomManager : MonoBehaviour
 
     void Start()
     {
-        
+        SetCurrentPlayerStatus(PlayerStatus.Ready);
     }
 
     void Update()
@@ -16,5 +16,8 @@ public class RoomManager : MonoBehaviour
         
     }
 
+    private void SetCurrentPlayerStatus(PlayerStatus status) {
+        GameObject.Find("PlayerManager").GetComponent<PlayerManager>().SetPlayerStatus(status);
+    }
     
 }

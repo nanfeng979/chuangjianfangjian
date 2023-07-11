@@ -21,7 +21,7 @@ public class HandleMessage : MonoBehaviour
 
     public void DebugMessageData(MessageData receive_message)
     {
-        Debug.Log(JsonConvert.SerializeObject(receive_message));
+        Debug.Log("打印收到后台的消息" + JsonConvert.SerializeObject(receive_message));
     }
     
 }

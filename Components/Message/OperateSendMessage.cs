@@ -70,6 +70,7 @@ public class OperateSendMessage : MonoBehaviour
 
     public void SendMessage_(string send_message)
     {
+        Debug.Log("打印发送出去的消息：" + send_message);
         byte[] data = Encoding.UTF8.GetBytes(send_message);
         stream.Write(data, 0, data.Length);
         stream.Flush();
