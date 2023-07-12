@@ -7,8 +7,6 @@ public class HandleMessage : MonoBehaviour
 {
     public static HandleMessage Instance;
 
-    private MessageData receiveMessage;
-
     void Start()
     {
         if(Instance == null) {
@@ -16,20 +14,16 @@ public class HandleMessage : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if(receiveMessage != null) {
-            OperateReceiveMessage(receiveMessage);
-            receiveMessage = null;
-        }
-    }
-
     // 主要操作接收到的数据
-    public void OperateReceiveMessage(MessageData receive_message)
+    public void OperateReceiveMessage(ref MessageData receive_message)
     {
         DebugMessageMessage(receive_message);
-        // 如果当前是在开房间的状态,则发送给RoomManager
-        GameObject.Find("RoomManager").GetComponent<RoomManager>().SetReceiveMessage(receive_message);
+        if(receive_message.playerData.playerName == GameObject.Find("PlayerManager").GetComponent<PlayerManager>().GetPlayerName()) {
+            Debug.Log("收到自己广播的消息");
+        } else {
+            // 如果当前是在开房间的状态,则发送给RoomManager
+            GameObject.Find("RoomManager").GetComponent<RoomManager>().OperateReceiveMessage(receive_message);
+        }
     }
 
     private void DebugMessageMessage(MessageData receive_message)

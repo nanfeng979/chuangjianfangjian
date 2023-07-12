@@ -24,16 +24,11 @@ public class RoomManager : MonoBehaviour
 
     void Update()
     {
-        if(receiveMessage != null) {
-            OperateReceiveMessage(receiveMessage);
-            receiveMessage = null;
-        }
-
         // 打印成员数据
         DebugPlayers();
     }
 
-    private void OperateReceiveMessage(MessageData receive_message)
+    public void OperateReceiveMessage(MessageData receive_message)
     {
         if(receive_message.messageType == EMessageType.JoinRoom.ToString()) {
             if(!playerNameList.Contains(receive_message.playerData.playerName)) {
@@ -74,10 +69,6 @@ public class RoomManager : MonoBehaviour
             a += playerNameList[i] + ", ";
         }
         Debug.Log("Room 成员有: " + a);
-    }
-
-    public void SetReceiveMessage(MessageData receive_message) {
-        receiveMessage = receive_message;
     }
 
     private void SetCurrentPlayerStatus(PlayerStatus status) {

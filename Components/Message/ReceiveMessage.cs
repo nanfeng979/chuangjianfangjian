@@ -19,7 +19,7 @@ public class ReceiveMessage : MonoBehaviour
     {
         if(receiveMessage != null) {
             // 将接收到的数据分流到HandleMessage中
-            HandleMessage.Instance.OperateReceiveMessage(receiveMessage);
+            HandleMessage.Instance.OperateReceiveMessage(ref receiveMessage);
             receiveMessage = null;
         }
     }
