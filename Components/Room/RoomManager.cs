@@ -28,11 +28,11 @@ public class RoomManager : MonoBehaviour
         DebugPlayers();
     }
 
-    public void OperateReceiveMessage(MessageData receive_message)
+    public void OperateReceiveMessage(ref MessageData receive_message)
     {
         if(receive_message.messageType == EMessageType.JoinRoom.ToString()) {
             if(!playerNameList.Contains(receive_message.playerData.playerName)) {
-                SetPlayerJoinRoom(receive_message.playerData);
+                SetPlayerJoinRoom(ref receive_message.playerData);
             } else {
                 SetPlayerWaitToSit();
             }
@@ -53,7 +53,7 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    private void SetPlayerJoinRoom(PlayerData player_data) {
+    private void SetPlayerJoinRoom(ref PlayerData player_data) {
         if(player_data != null) {
             playerNameList.Add(player_data.playerName);
         }

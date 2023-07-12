@@ -51,7 +51,7 @@ public class OperateSendMessage : MonoBehaviour
                 int bytesRead = stream.Read(buffer, 0, buffer.Length);
                 string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
                 // 处理接收到的消息
-                OperationReceiveData(message);
+                OperationReceiveData(ref message);
             }
             catch(ObjectDisposedException e){
                 Debug.Log("断开连接：" + e.Message);
@@ -64,7 +64,7 @@ public class OperateSendMessage : MonoBehaviour
         }
     }
 
-    private void OperationReceiveData(string receive_message) {
+    private void OperationReceiveData(ref string receive_message) {
         ReceiveMessage.Instance.ReceiveMessage_(JsonConvert.DeserializeObject<MessageData>(receive_message));
     }
 
