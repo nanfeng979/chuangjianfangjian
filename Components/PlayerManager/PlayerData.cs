@@ -9,6 +9,7 @@ public enum PlayerStatus
     None,
     JoinRoom,
     WaitToSit,
+    Sitting,
     Ready,
     Play,
 }

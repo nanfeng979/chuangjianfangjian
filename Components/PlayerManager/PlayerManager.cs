@@ -33,6 +33,9 @@ public class PlayerManager : MonoBehaviour
             case PlayerStatus.WaitToSit:
                 WaitToSitStatus();
                 break;
+            case PlayerStatus.Sitting:
+                SittingStatus();
+                break;
             case PlayerStatus.Ready:
                 break;
             case PlayerStatus.Play:
@@ -44,11 +47,15 @@ public class PlayerManager : MonoBehaviour
     }
 
     private void JoinRoomStatus() {
-        SendMessageWithSelfStatus(EMessageType.JoinRoom);
+        
     }
 
     private void WaitToSitStatus() {
-        SendMessageWithSelfStatus(EMessageType.WaitToSit);
+        
+    }
+
+    private void SittingStatus() {
+        
     }
 
     private void SendMessageWithSelfStatus(EMessageType self_status) {

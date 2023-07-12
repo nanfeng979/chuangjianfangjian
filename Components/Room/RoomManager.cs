@@ -30,27 +30,7 @@ public class RoomManager : MonoBehaviour
 
     public void OperateReceiveMessage(ref MessageData receive_message)
     {
-        if(receive_message.messageType == EMessageType.JoinRoom.ToString()) {
-            if(!playerNameList.Contains(receive_message.playerData.playerName)) {
-                SetPlayerJoinRoom(ref receive_message.playerData);
-            } else {
-                SetPlayerWaitToSit();
-            }
-        }
-
-        if(receive_message.messageType == EMessageType.WaitToSit.ToString()) {
-            for(int i = 0; i < 4; i++) {
-                if(seats[i].transform.Find("PlayerName").GetComponent<Text>().text == receive_message.playerData.playerName) {
-                    return;
-                }
-                
-                if(seats[i].transform.Find("PlayerName").GetComponent<Text>().text == "PlayerName: ") {
-                    seats[i].transform.Find("PlayerName").GetComponent<Text>().text = receive_message.playerData.playerName;
-                    SetCurrentPlayerStatus(PlayerStatus.None);
-                    break;
-                }
-            }
-        }
+        
     }
 
     private void SetPlayerJoinRoom(ref PlayerData player_data) {
